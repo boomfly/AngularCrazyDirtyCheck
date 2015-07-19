@@ -1,0 +1,1 @@
+Product = new Mongo.Collection 'products'

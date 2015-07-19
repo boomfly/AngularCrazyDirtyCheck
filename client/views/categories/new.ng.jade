@@ -1,0 +1,35 @@
+.wrapper.wrapper-content.animated.fadeInRight.ng-scope
+    .row
+        .col-lg-6
+            .panel.panel-default
+                .panel-heading
+                    h5 Форма новой категории
+                .panel-body
+                    form.form(name="form", novalidate="", ng-submit="create()")
+                        .form-group
+                            label(ng-bind="'CATEGORY TITLE LABEL' | translate")
+                            input.form-control(type="text", placeholder="{{ 'CATEGORY TITLE PLACEHOLDER' | translate }}", ng-model="category.title")
+                        .form-group
+                            label(ng-bind="'CATEGORY DESCRIPTION LABEL' | translate")
+                            textarea.form-control(rows="3", placeholder="{{ 'CATEGORY DESCRIPTION PLACEHOLDER' | translate }}", ng-model="category.description")
+
+                        div
+                            label
+                                input(icheck='', type='checkbox', ng-model='category.published')
+                                |  {{ 'CATEGORY PUBLISHED LABEL' | translate }}
+
+                        hr
+                        button.btn.btn-primary(type="submit", ng-disabled="form.$invalid", ng-bind="'CATEGORY CREATE BUTTON LABEL' | translate")
+        .col-lg-6
+            .tabs-container
+                tabset
+                    tab(heading="{{ 'CATEGORY IMAGE TAB LABEL' | translate }}")
+                        .panel-body
+                            .cropper-image(style="height: 300px")
+                                img(ng-if="category.image && !crop.file", ng-src="{{category.image.url}}", alt="{{category.name}}")
+                                img(mws-crop="crop", file="crop.file", alt="Предварительный просмотр", ng-show="crop.file", style="width: 100%; height: 500px")
+                                span.text-center(ng-if="!category.image && !crop.file", style="display: block") Добавьте изображение
+                            hr
+                            label.btn.btn-primary(for="inputImage")
+                                input(type="file", accept="image/*", name="file", id="inputImage", class="hide", nv-file-select="", uploader="uploader")
+                                |  {{ 'CATEGORY CHANGE IMAGE BUTTON LABEL' | translate }}

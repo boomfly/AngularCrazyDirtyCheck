@@ -1,0 +1,1 @@
+UserDevices = new Mongo.Collection 'user-devices'

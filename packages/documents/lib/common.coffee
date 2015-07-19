@@ -1,0 +1,3 @@
+Schema = {}
+
+FS.debug = true

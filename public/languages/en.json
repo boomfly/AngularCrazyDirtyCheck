@@ -1,0 +1,10 @@
+{
+    "dashboard": "Dashboard",
+    "services": "Services",
+    "statistics": "Statistics",
+    "settings": "Settings",
+    "logout": "Logout",
+    "sign_in": "Sign in",
+    "sign_out": "Sign out",
+    "app_title": "iTaxi Manager"
+}

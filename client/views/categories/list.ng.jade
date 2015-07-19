@@ -1,0 +1,37 @@
+.row.animated.fadeInRight
+    .col-lg-12
+        .panel.panel-default
+            .panel-heading
+                h5 Список
+            .panel-body
+                button.btn.btn-primary.btn-sm(ui-sref="home.categories.new") Новая категория
+                table.table.table-striped
+                    thead
+                        tr
+                            th #
+                            th Наименование
+                            th Изображение
+                            th Опубликовано
+                            th.text-right
+                    tbody
+                        tr(ng-repeat="category in categories")
+                            td(ng-bind="$index + 1")
+                            td(ng-bind="getCategoryTitle(category)")
+                            td
+                                img(ng-src="{{ getImage(category).url() }}", style="height: 100px")
+                            td
+                                span.label(ng-bind="category.published")
+                            td.text-right
+                                .btn-group.btn-group-xs
+                                    .btn.btn-default(ui-sref="home.categories.edit({ categoryId: category._id })")
+                                        i.fa.fa-edit.fa-fw
+                                    .btn.btn-danger(ng-click="remove(category)")
+                                        i.fa.fa-trash.fa-fw
+                        tr(ng-if="(!categories || categories.length === 0) && !loading")
+                            td.text-center(colspan="7")
+                                | Нет категорий
+                                br
+                                br
+                                a.btn.btn-primary.btn-sm(ui-sref="home.categories.new") Создать
+                        tr(ng-if="loading")
+                            td.text-center(colspan="7") Загрузка...
