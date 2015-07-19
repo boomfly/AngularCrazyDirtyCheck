@@ -1,0 +1,6 @@
+# AngularCrazyDirtyCheck
+
+```
+bower install
+meteor
+```
